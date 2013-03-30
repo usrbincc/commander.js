@@ -523,14 +523,14 @@ Command.prototype.parseOptions = function(argv){
   for (var i = 0; i < len; ++i) {
     arg = argv[i];
 
-    // literal args after --
-    if ('--' == arg) {
-      literal = true;
+    if (literal) {
+      args.push(arg);
       continue;
     }
 
-    if (literal) {
-      args.push(arg);
+    // literal args after --
+    if ('--' == arg) {
+      literal = true;
       continue;
     }
 
